@@ -1,36 +1,36 @@
 import React, { useState } from "react";
 
 const TodoList = () => {
-  // Initialize the todos state as an empty array
-  const [todos, setTodos] = useState([]);
+ // Initialize the todos state as an empty array
+ const [todos, setTodos] = useState([]);
 
-  // Initialize the newTodo state as an empty string
-  const [newTodo, setNewTodo] = useState('');
+ // Initialize the newTodo state as an empty string
+ const [newTodo, setNewTodo] = useState('');
 
   // Function to handle the input change
   const handleInputChange = (e) => {
-    setNewTodo(e.target.value); // Update the newTodo state with the input value
+    // Code and complete the logic to update the newTodo state with the value from the input field
+    setNewTodo(e.target.value);
   };
 
   // Function to add a new todo
   const handleAddTodo = () => {
-    if (newTodo.trim() === "") return; // Prevent adding empty todos
-    setTodos([...todos, { text: newTodo, completed: false }]); // Add a new todo object
-    setNewTodo(""); // Clear input field after adding the todo
+    //  Code and complete the logic to add the new todo if it's not empty
+    if (newTodo.trim()==="")return;
+    setTodos([...todos,(text: newTodo, complete:false)]);
+    setNewTodo("");
   };
 
   // Function to toggle the completion status of a todo
   const handleToggleComplete = (index) => {
-    const updatedTodos = todos.map((todo, i) =>
-      i === index ? { ...todo, completed: !todo.completed } : todo
-    );
-    setTodos(updatedTodos);
+    const updatedTodos = todos.map((todo, i)=> i === index ?{...todo, completed:!todo.complete});
+    setTodos(updateedTodos);
   };
 
   // Function to delete a todo
   const handleDeleteTodo = (index) => {
-    const updatedTodos = todos.filter((_, i) => i !== index); // Remove the selected todo
-    setTodos(updatedTodos);
+    const updatedTodos = todos.filter((_,i)=>i !== index);
+    setTodos(updatedTodos)
   };
 
   return (
@@ -39,7 +39,7 @@ const TodoList = () => {
       <input
         type="text"
         placeholder="Add a new task"
-        value={newTodo} // Ensure input field is controlled
+        value={newTodos}// Ensure this input field is controlled via newTodo state
         onChange={handleInputChange}
       />
       <button onClick={handleAddTodo}>Add Todo</button>
@@ -49,7 +49,6 @@ const TodoList = () => {
             <span
               style={{
                 textDecoration: todo.completed ? "line-through" : "none",
-                cursor: "pointer"
               }}
               onClick={() => handleToggleComplete(index)}
             >
